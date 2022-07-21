@@ -28,11 +28,11 @@ pipeline {
                         ]
                     ], 
                     credentialsId: 'nexus3', 
-                    groupId: 'in.javahome', 
-                    nexusUrl: '172.31.15.204:8081', 
+                    groupId: 'com.example.maven-project', 
+                    nexusUrl: '54.234.131.92:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: nexusRepoName, 
+                    repository: maven-snapshots, 
                     version: "${mavenPom.version}"
                     }
             }
