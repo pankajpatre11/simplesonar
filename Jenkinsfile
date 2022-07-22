@@ -8,8 +8,11 @@ pipeline {
                  archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
             }
         }
-        stage('Push War To Nexus'){
+        
+        
+    stage('Push War To Nexus'){
             steps{
+                
                  nexusArtifactUploader artifacts: [
                      [artifactId: 'maven-project',
                       classifier: '',
