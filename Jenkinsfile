@@ -56,7 +56,7 @@ pipeline
                 script{
                      docker.withRegistry('http://'+registry, registryCredentials)
                     {
-                     dockeImage.push(latest)
+                     dockerImage.push(latest)
                      }
                 }
             }
