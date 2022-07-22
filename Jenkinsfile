@@ -15,7 +15,7 @@ pipeline
         {
             steps
             {
-                    nexusArtifactUploader artifacts: [[artifactId: 'maven-project', file: 'target/*', type: 'war']], credentialsId: 'nexusid', groupId: 'in.javahome', nexusUrl: '44.201.219.187:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '3.0.0'
+                    nexusArtifactUploader artifacts: [[artifactId: 'maven-project', file: 'target/*', type: 'war']], credentialsId: 'nexusid', groupId: 'in.javahome', nexusUrl: '44.201.219.187', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '3.0.0'
             }
         }
  
