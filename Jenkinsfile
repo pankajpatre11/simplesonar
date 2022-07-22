@@ -1,6 +1,12 @@
 pipeline 
 {
     agent any
+    environment{
+        imageName = "myapp"
+        registryCredentials = "nexusid"
+        registry = "44.201.219.187:8083"
+        dockerImage = ''
+    }
     options {
        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
        }
@@ -41,7 +47,15 @@ pipeline
                  sh script: 'dockerImage = docker.build imageName'
             }
          }
- 
+      stage('Upload Docker image into Nexus')
+        {
+            steps
+            {
+                 sh script: 'docker.withRegistry('http://'+44.201.219.187:8083, registryCredentials){
+                     dockeImage.push('latest')
+                     }
+            }
+         }
     }
 }
 
