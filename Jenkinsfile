@@ -23,7 +23,7 @@ pipeline
                       type: 'war'
                      ]],
                     credentialsId: 'nexusid',
-                    groupId: 'com.example.maven3-project',
+                    groupId: 'com.example',
                     nexusUrl: '44.201.219.187:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
