@@ -13,7 +13,7 @@ pipeline
                  sh script: 'mvn clean package'
             }
          }
-        stage('Upload'){
+        stage('Upload War To Nexus'){
             steps{ 
                 script{
                 def mavenPom = readMavenPom file: 'pom.xml'
