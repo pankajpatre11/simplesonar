@@ -51,9 +51,12 @@ pipeline
         {
             steps
             {
-                 sh script: 'docker.withRegistry('http://'+44.201.219.187:8083, registryCredentials){
+                script{
+                     docker.withRegistry( registry, registryCredentials)
+                    {
                      dockeImage.push('latest')
                      }
+                }
             }
          }
     }
