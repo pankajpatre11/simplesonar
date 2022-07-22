@@ -34,6 +34,13 @@ pipeline
                 }
             }
         }
+        stage('Build Docker image')
+        {
+            steps
+            {
+                 sh script: 'dockerImage = docker.build imageName'
+            }
+         }
  
     }
 }
