@@ -11,11 +11,6 @@ pipeline
                  sh script: 'mvn clean install'
             }
          }
-    }        
-        
-
-    stages
-    {
         stage('Upload')
         {
             steps
