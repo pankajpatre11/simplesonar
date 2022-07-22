@@ -10,24 +10,7 @@ pipeline {
         }
         
         
-    stage('Push War To Nexus'){
-            steps{
-                
-                 nexusArtifactUploader artifacts: [
-                     [artifactId: 'maven-project',
-                      classifier: '',
-                      file: 'target/maven-project-1.0.0.war',
-                      type: 'war']
-                 ], 
-                     credentialsId: 'nexus',
-                     groupId: 'com.example.maven3-project',
-                     nexusUrl: '44.201.219.187:8081',
-                     nexusVersion: 'nexus3',
-                     protocol: 'http',
-                     repository: 'simple-app-release',
-                     version: '1.0.0'
-            }
-        }        
+   
 
         
  /*       stage('Upload War To Nexus'){
