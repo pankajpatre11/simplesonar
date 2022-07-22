@@ -44,7 +44,9 @@ pipeline
         {
             steps
             {
-                 sh script: 'dockerImage = docker.build imageName'
+                script{
+                    dockerImage = docker.build imageName
+                }
             }
          }
       stage('Upload Docker image into Nexus')
