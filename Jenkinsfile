@@ -8,7 +8,7 @@ pipeline {
                  archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
             }
         }
-        stage('Upload War To Nexus'){
+ /*       stage('Upload War To Nexus'){
             steps{
                 script{
 
@@ -31,7 +31,7 @@ pipeline {
                     version: "${mavenPom.version}"
                     }
             }
-        }
+        } */
     }
 }
 
