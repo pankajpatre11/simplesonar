@@ -13,7 +13,7 @@ pipeline
          }
         stage('Upload'){
             steps{ 
-                def mavenPom = readMavenPom 'pom.xml'
+                def mavenPom = readMavenPom file: 'pom.xml'
                 nexusArtifactUploader artifacts: 
                     [[artifactId: 'maven-project',
                       classifier: '',
