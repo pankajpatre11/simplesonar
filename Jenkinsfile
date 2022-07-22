@@ -16,7 +16,7 @@ pipeline {
     -Dversion=1.0.0 \
     -DgeneratePom=true \
     -Dpackaging=war \
-    -DrepositoryId=sample-rel \
+    -DrepositoryId=nexus-snapshots \
     -Durl=http://44.201.219.187:8081/maven-snapshots/ \
     -Dfile=./target'
             }
