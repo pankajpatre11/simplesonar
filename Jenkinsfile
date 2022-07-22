@@ -15,7 +15,8 @@ pipeline
         {
             steps
             {
-                  nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: 'target/maven-project-1.0.0-SNAPSHOT.war', type: 'war']], credentialsId: 'nexusid', groupId: 'com.example.maven3-project', nexusUrl: '44.201.219.187:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0.0-SNAPSHOT'
+                def mavenPom = readMavenPom 'pom.xml'
+                nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: "target/maven-project-${mavenPom.version}.war", type: 'war']], credentialsId: 'nexusid', groupId: 'com.example.maven3-project', nexusUrl: '44.201.219.187:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: "${mavenPom.version}"
             }
         }
  
