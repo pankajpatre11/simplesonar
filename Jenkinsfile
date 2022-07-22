@@ -8,6 +8,21 @@ pipeline {
                  archiveArtifacts artifacts: 'target/*.war', onlyIfSuccessful: true
             }
         }
+        stage('Push War To Nexus'){
+            steps{
+                 sh script: 'mvn deploy:deploy-file \
+    -DgroupId=com.example.maven-project \
+    -DartifactId=simple-app \
+    -Dversion=1.0.0 \
+    -DgeneratePom=true \
+    -Dpackaging=war \
+    -DrepositoryId=sample-rel \
+    -Durl=http://44.201.219.187:8081/maven-snapshots/ \
+    -Dfile=./target'
+            }
+        }        
+
+        
  /*       stage('Upload War To Nexus'){
             steps{
                 script{
