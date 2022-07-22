@@ -10,15 +10,7 @@ pipeline {
         }
         stage('Push War To Nexus'){
             steps{
-                 sh script: 'mvn deploy:deploy-file \
-    -DgroupId=com.example.maven-project \
-    -DartifactId=simple-app \
-    -Dversion=1.0.0 \
-    -DgeneratePom=true \
-    -Dpackaging=war \
-    -DrepositoryId=nexus-snapshots \
-    -Durl=http://44.201.219.187:8081/maven-snapshots/ \
-    -Dfile=./target'
+                 nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: 'target/simple-app-1.0.0.war', type: 'war']], credentialsId: 'nexusid', groupId: 'com.example.maven3-project', nexusUrl: '44.201.219.187:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://44.201.219.187:8081/repository/simple-app-release/', version: '1.0.0-SNAPSHOT'
             }
         }        
 
