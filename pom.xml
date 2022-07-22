@@ -23,4 +23,11 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         </properties>
+	<servers>
+        <server>
+            <id>nexusid</id>
+            <username>admin</username>
+            <password>admin</password>
+        </server>
+</servers>
 </project>
