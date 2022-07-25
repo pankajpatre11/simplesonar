@@ -6,12 +6,24 @@ pipeline {
                 git url: 'https://github.com/pankajpatre11/simplesonar.git'
             }
         }
-        stage('report'){
-            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])}
-
-        stage('Artifact'){
-            step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])}
+ 
    
+withSonarQubeEnv('SonarQubeServer') {
+                    dir("/var/lib/jenkins/workspace/demo-pipeline/"){
+                        sh '''
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
+			-Dsonar.projectKey=pankajpatre11_simple-app \
+			-Dsonar.projectName=PankajPatre \
+                        -Dsonar.java.coveragePlugin=jacoco \
+                        -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+    			-Dsonar.junit.reportsPaths=target/surefire-reports
+    			'''
+                   }
+                }        
+        
+        
+        
+        
         
         
         stage('SonarQube analysis') {
