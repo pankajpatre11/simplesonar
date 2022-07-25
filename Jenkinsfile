@@ -19,6 +19,31 @@ pipeline
                  sh script: 'mvn clean package'
             }
          }
+       
+stage('SonarQube analysis') {
+    environment {
+      SCANNER_HOME = tool 'Sonar-scanner'
+    }
+    steps {
+    withSonarQubeEnv(credentialsId: 'sonarrr', installationName: 'Sonar') {
+         sh '''$SCANNER_HOME/bin/sonar-scanner \
+         -Dsonar.projectKey=pankajpatre11_simple-app \
+         -Dsonar.projectName=maven-project \
+         -Dsonar.sources=src/ \
+         -Dsonar.java.binaries=target/classes/ \
+         -Dsonar.exclusions=src/test/java/****/*.java \
+         -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
+         -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+       }
+     }
+}
+   stage('SQuality Gate') {
+     steps {
+       timeout(time: 1, unit: 'MINUTES') {
+       waitForQualityGate abortPipeline: true
+       }
+  }
+}
         stage('Upload War To Nexus'){
             steps{ 
                 script{
