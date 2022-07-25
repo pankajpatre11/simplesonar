@@ -6,13 +6,11 @@ pipeline {
                 git url: 'https://github.com/pankajpatre11/simplesonar.git'
             }
         }
-          stage('junit analysis') {
-            
-             
-            steps {
-                sh 'mvn clean verify -DskipITs=true';junit '/var/lib/jenkins/workspace/demo-pipeline/target/surefire-reports/TEST-*.xml'archive '/var/lib/jenkins/workspace/demo-pipeline/target/*.war'
-                }
-            }
+        stage('report'){
+            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])}
+
+        stage('Artifact'){
+            step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])}
    
         
         
