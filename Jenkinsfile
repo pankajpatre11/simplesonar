@@ -29,7 +29,7 @@ stage('SonarQube analysis') {
       SCANNER_HOME = tool 'Sonar-scanner'
     }
     steps {
-    withSonarQubeEnv(credentialsId: 'sonarrr', installationName: 'Sonar') {
+    withSonarQubeEnv(credentialsId: 'sonarrr', installationName: 'SonarQube') {
          sh '''$SCANNER_HOME/bin/sonar-scanner \
          -Dsonar.projectKey=pankajpatre11_simple-app \
          -Dsonar.projectName=maven-project \
