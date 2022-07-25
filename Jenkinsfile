@@ -6,6 +6,16 @@ pipeline {
                 git url: 'https://github.com/pankajpatre11/simplesonar.git'
             }
         }
+          stage('junit analysis') {
+            
+             
+            steps {
+                sh 'mvn clean verify -DskipITs=true';junit '**/target/surefire-reports/TEST-*.xml'archive 'target/*.jar'
+                }
+            }
+   
+        
+        
         stage('SonarQube analysis') {
             
              
