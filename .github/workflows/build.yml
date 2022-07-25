@@ -35,3 +35,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn sonar:sonar -Dsonar.projectKey=pankajpatre11 -Dsonar.projectName=PankajPatre -Dsonar.branch.name=Ola-sonar-sdds-testing --batch-mode
 #mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=pankajpatre11
+
