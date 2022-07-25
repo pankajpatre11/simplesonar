@@ -9,7 +9,7 @@ pipeline {
  
    
          stage('SonarQubeServer') {
-                    dir("/var/lib/jenkins/workspace/demo-pipeline/"){
+		  steps {
                         sh '''
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
 			-Dsonar.projectKey=pankajpatre11_simple-app \
@@ -19,6 +19,7 @@ pipeline {
     			-Dsonar.junit.reportsPaths=target/surefire-reports
     			'''
                    }
+		  }
                 }        
         
         
