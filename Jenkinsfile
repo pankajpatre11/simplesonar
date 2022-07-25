@@ -7,6 +7,10 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
+            
+             environment {
+      SCANNER_HOME = tool 'Sonar-scanner'
+    }
             steps {
                 withSonarQubeEnv('SonarQube') {
                    sh "mvn clean install"
