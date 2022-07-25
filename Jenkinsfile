@@ -8,7 +8,7 @@ pipeline {
         }
  
    
-withSonarQubeEnv('SonarQubeServer') {
+         stage('SonarQubeServer') {
                     dir("/var/lib/jenkins/workspace/demo-pipeline/"){
                         sh '''
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
