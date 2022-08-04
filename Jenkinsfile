@@ -8,7 +8,7 @@ pipeline {
         }
  
    
-         stage('SonarQubeServer') {
+        stage('SonarQubeServer') {
 		  steps {
                         sh '''
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
@@ -20,17 +20,10 @@ pipeline {
     			'''
                    }
 		  }
-                     
+                      
         
-        
-        
-        
-        
-        
-        stage('SonarQube analysis') {
-            
-             
-            steps {
+         stage('SonarQube analysis') {
+           steps {
                 withSonarQubeEnv('SonarQube') {
                    sh "mvn clean install"
                     sh "mvn sonar:sonar -Dsonar.login='e1ddcc1c5d09f8131f66537b11a48dd95387c806'"
